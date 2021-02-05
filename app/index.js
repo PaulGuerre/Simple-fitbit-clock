@@ -1,35 +1,34 @@
-//All import needed
 import clock from "clock";
 import document from "document";
 import { HeartRateSensor } from "heart-rate";
 import { display } from "display";
 import { me as appbit } from "appbit";
 import { today } from "user-activity";
+import * as messaging from "messaging";
+import document from "document";
 
-//Get the date every second 
+//Récupération de la date et de l'heure à la seconde près
 clock.granularity = "seconds"; // seconds, minutes, hours
 
-//Const which gets all elements needed
+//Récupération des éléments affichés 
 const clockLabel = document.getElementById("clock-label");
 const hrmLabel = document.getElementById("hrm-label");
 const caloriesLabel = document.getElementById("calories-label");
 const dateLabel = document.getElementById("date-label");
-
-//Array containing all months
+const bgColor = document.getElementById("bgColor");
+const bgImage = document.getElementById("bg-image");
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
-//Print date and time every second
+//Affichage de l'heure et de la date
 clock.addEventListener("tick", (evt) => {
-  //Print time
   clockLabel.text = evt.date.toTimeString().slice(0, -4);
   
-  //Print date
   let dayName = evt.date.toString().split(' ')[0];
   let day = evt.date.getDay();
   dateLabel.text = dayName + ", " + day + " " + monthNames[evt.date.getMonth()];
 });
 
-//Print heart rate
+//Affichage du capteur de battements cardiaques
 if (HeartRateSensor && appbit.permissions.granted("access_heart_rate")) {
   const hrm = new HeartRateSensor();
   hrm.addEventListener("reading", () => {
@@ -42,7 +41,26 @@ if (HeartRateSensor && appbit.permissions.granted("access_heart_rate")) {
   hrm.start();
 }
 
-//Print calories
+//Affichage du nombre de calories 
 if (appbit.permissions.granted("access_activity")) {
   caloriesLabel.text = today.adjusted.calories;
 }
+
+//Modification de la couleur du fond d'écran, du texte et de l'icone
+messaging.peerSocket.addEventListener("message", (evt) => {
+  if (evt && evt.data && evt.data.key === "bgColor") {
+    bgColor.style.fill = evt.data.value;
+  }
+  else if(evt && evt.data && evt.data.key === "txtColor") {
+    clockLabel.style.fill = evt.data.value;
+    hrmLabel.style.fill = evt.data.value;
+    caloriesLabel.style.fill = evt.data.value;
+    dateLabel.style.fill = evt.data.value;
+  }
+  else if(evt && evt.data && evt.data.key === "vitality") {
+    bgImage.image = "team/vitality.png";
+  }
+  else if(evt && evt.data && evt.data.key === "liquid") {
+    bgImage.image = "team/liquid.png";
+  }
+});
