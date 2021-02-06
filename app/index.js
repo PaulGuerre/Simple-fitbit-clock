@@ -46,21 +46,21 @@ if (appbit.permissions.granted("access_activity")) {
   caloriesLabel.text = today.adjusted.calories;
 }
 
-//Modification de la couleur du fond d'écran, du texte et de l'icone
+//Modification du style
 messaging.peerSocket.addEventListener("message", (evt) => {
+  //Modification de la couleur du fond 
   if (evt && evt.data && evt.data.key === "bgColor") {
     bgColor.style.fill = evt.data.value;
   }
+  //Modification de la couleur du texte
   else if(evt && evt.data && evt.data.key === "txtColor") {
     clockLabel.style.fill = evt.data.value;
     hrmLabel.style.fill = evt.data.value;
     caloriesLabel.style.fill = evt.data.value;
     dateLabel.style.fill = evt.data.value;
   }
-  else if(evt && evt.data && evt.data.key === "vitality") {
-    bgImage.image = "team/vitality.png";
-  }
-  else if(evt && evt.data && evt.data.key === "liquid") {
-    bgImage.image = "team/liquid.png";
+  //Modification du fond d'écran
+  else {
+    bgImage.image = "team/"+evt.data.key+".png";
   }
 });

@@ -6,8 +6,17 @@ import { me as companion } from "companion";
 let BG_COLOR = "bgColor";
 let TXT_COLOR = "txtColor";
 
+//Image des teams
 let VIT = "vitality";
 let LQD = "liquid";
+let G2 = "g2";
+let AST = "astralis";
+let MBR = "mibr";
+let OG = "og";
+let SLR = "solary";
+let FNC = "fnatic";
+let NVI = "navi";
+let DRC = "droso";
 
 // Settings have been changed
 settingsStorage.addEventListener("change", (evt) => {
@@ -21,6 +30,14 @@ if (companion.launchReasons.settingsChanged) {
   sendValue(TXT_COLOR, settingsStorage.getItem(TXT_COLOR));
   sendValue(VIT, settingsStorage.getItem(VIT));
   sendValue(LQD, settingsStorage.getItem(LQD));
+  sendValue(G2, settingsStorage.getItem(G2));
+  sendValue(AST, settingsStorage.getItem(AST));
+  sendValue(MBR, settingsStorage.getItem(MBR));
+  sendValue(OG, settingsStorage.getItem(OG));
+  sendValue(SLR, settingsStorage.getItem(SLR));
+  sendValue(FNC, settingsStorage.getItem(FNC));
+  sendValue(NVI, settingsStorage.getItem(NVI));
+  sendValue(DRC, settingsStorage.getItem(DRC));
 }
 
 function sendValue(key, val) {

@@ -11,11 +11,11 @@
   
   <image id="bg-image" x="25%" y="25%" width="50%" height="50%" href="team/vitality.png" />
   
-  <text id="hrm-label" x="85%" y="50%"
+  <text id="hrm-label" x="85%" y="55%"
       fill="#ffc22c" font-size="32" font-family="System-Regular"
       text-anchor="middle">000</text>
   
-  <text id="calories-label" x="15%" y="50%"
+  <text id="calories-label" x="15%" y="55%"
       fill="#ffc22c" font-size="20" font-family="System-Regular"
       text-anchor="middle">0000</text>
 </svg>
