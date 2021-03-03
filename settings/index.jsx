@@ -1,4 +1,4 @@
-const colIcons=['https://upload.wikimedia.org/wikipedia/commons/9/92/Logo_Team_Vitality_2020.png','https://upload.wikimedia.org/wikipedia/fr/thumb/f/fe/Team_Liquid.svg/1200px-Team_Liquid.svg.png'];
+const colIcons=["https://upload.wikimedia.org/wikipedia/commons/9/92/Logo_Team_Vitality_2020.png','https://upload.wikimedia.org/wikipedia/fr/thumb/f/fe/Team_Liquid.svg/1200px-Team_Liquid.svg.png"];
 
 function Colors(props) {
   return (

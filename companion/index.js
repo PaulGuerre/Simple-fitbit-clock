@@ -43,7 +43,7 @@ if (companion.launchReasons.settingsChanged) {
 function sendValue(key, val) {
   if (val) {
     sendSettingData({
-      key: key,
+      key,
       value: JSON.parse(val)
     });
   }
