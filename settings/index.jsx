@@ -113,8 +113,6 @@ function Colors(props) {
             {color: "crimson"},
             {color: "red"}      
           ]}
-          
-          onSelection={(name) => console.log(name)}
         />
       </Section>
       <Section

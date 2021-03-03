@@ -52,7 +52,5 @@ function sendSettingData(data) {
   // If we have a MessageSocket, send the data to the device
   if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
     messaging.peerSocket.send(data);
-  } else {
-    console.log("No peerSocket connection");
   }
 }
