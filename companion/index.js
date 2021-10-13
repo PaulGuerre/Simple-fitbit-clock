@@ -16,7 +16,6 @@ let OG = "og";
 let SLR = "solary";
 let FNC = "fnatic";
 let NVI = "navi";
-let DRC = "droso";
 
 // Settings have been changed
 settingsStorage.addEventListener("change", (evt) => {
@@ -37,13 +36,12 @@ if (companion.launchReasons.settingsChanged) {
   sendValue(SLR, settingsStorage.getItem(SLR));
   sendValue(FNC, settingsStorage.getItem(FNC));
   sendValue(NVI, settingsStorage.getItem(NVI));
-  sendValue(DRC, settingsStorage.getItem(DRC));
 }
 
 function sendValue(key, val) {
   if (val) {
     sendSettingData({
-      key,
+      key: key,
       value: JSON.parse(val)
     });
   }
@@ -52,5 +50,7 @@ function sendSettingData(data) {
   // If we have a MessageSocket, send the data to the device
   if (messaging.peerSocket.readyState === messaging.peerSocket.OPEN) {
     messaging.peerSocket.send(data);
+  } else {
+    console.log("No peerSocket connection");
   }
 }

@@ -1,5 +1,3 @@
-const colIcons=["https://upload.wikimedia.org/wikipedia/commons/9/92/Logo_Team_Vitality_2020.png','https://upload.wikimedia.org/wikipedia/fr/thumb/f/fe/Team_Liquid.svg/1200px-Team_Liquid.svg.png"];
-
 function Colors(props) {
   return (
     <Page>
@@ -113,6 +111,8 @@ function Colors(props) {
             {color: "crimson"},
             {color: "red"}      
           ]}
+          
+          onSelection={(name) => console.log(name)}
         />
       </Section>
       <Section
@@ -126,7 +126,6 @@ function Colors(props) {
         <Toggle settingsKey="solary" label="Solary" onChange={() => props.settingsStorage.clear()} />
         <Toggle settingsKey="fnatic" label="Fnatic" onChange={() => props.settingsStorage.clear()} />
         <Toggle settingsKey="navi" label="NAVI" onChange={() => props.settingsStorage.clear()} />
-        <Toggle settingsKey="droso" label="Droso Crew" onChange={() => props.settingsStorage.clear()} />
       </Section>
     </Page>
   );

@@ -1,11 +1,11 @@
 {
   "devDependencies": {
-    "@fitbit/sdk": "~5.0.0"
+    "@fitbit/sdk": "~4.3.0"
   },
   "fitbit": {
     "appUUID": "e6f32143-6a7a-496e-9d21-b12ab875728d",
     "appType": "clockface",
-    "appDisplayName": "E-SPORT TEAMS CLOCK",
+    "appDisplayName": "Esport clock",
     "iconFile": "resources/icon.png",
     "wipeColor": "",
     "requestedPermissions": [
@@ -13,17 +13,18 @@
       "access_activity"
     ],
     "buildTargets": [
-      "atlas",
-      "vulcan"
+      "meson",
+      "gemini",
+      "mira"
     ],
     "i18n": {
       "en-US": {
-        "name": "E-SPORT TEAMS CLOCK"
+        "name": "Esport clock"
       },
       "fr-FR": {
-        "name": "E-SPORT TEAMS CLOCK"
+        "name": "Esport clock"
       }
     },
-    "defaultLanguage": "fr-FR"
+    "defaultLanguage": "en-US"
   }
 }

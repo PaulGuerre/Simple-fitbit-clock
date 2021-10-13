@@ -5,7 +5,8 @@ import { display } from "display";
 import { me as appbit } from "appbit";
 import { today } from "user-activity";
 import * as messaging from "messaging";
-import document from "document";
+import { preferences } from "user-settings";
+import * as util from "../common/utils";
 
 //Récupération de la date et de l'heure à la seconde près
 clock.granularity = "seconds"; // seconds, minutes, hours
@@ -20,13 +21,24 @@ const bgImage = document.getElementById("bg-image");
 const monthNames = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 
 //Affichage de l'heure et de la date
-clock.addEventListener("tick", (evt) => {
-  clockLabel.text = evt.date.toTimeString().slice(0, -4);
+clock.ontick = (evt) => {   
+  let today = evt.date;
+  let hours = today.getHours();
+  if (preferences.clockDisplay === "12h") {
+    // 12h format
+    hours = hours % 12 || 12;
+  } else {
+    // 24h format
+    hours = util.zeroPad(hours);
+  }
+  let mins = util.zeroPad(today.getMinutes());
+  let secs = util.zeroPad(today.getSeconds());
+  clockLabel.text = `${hours}:${mins}:${secs}`;
   
   let dayName = evt.date.toString().split(' ')[0];
-  let day = evt.date.getDay();
+  let day = evt.date.getDate();
   dateLabel.text = dayName + ", " + day + " " + monthNames[evt.date.getMonth()];
-});
+}
 
 //Affichage du capteur de battements cardiaques
 if (HeartRateSensor && appbit.permissions.granted("access_heart_rate")) {
